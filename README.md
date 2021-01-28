@@ -21,10 +21,14 @@ rails-6.1.0
 * Usage
 
 Models:
+
 	Player, Team, Game, GameStat
+
 Methods:
+
 	Player:
 		`check_stat(arg, valid_num, games = 5)` method that is used to check if player have completed certain `valid_num` of `arg` stat in `games` games.
+			
 			arguments:
 				arg: argument for attribute of any `GameStat` instance.
 				valid_num: number that attribute's stat is checked against.
