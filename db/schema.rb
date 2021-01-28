@@ -15,28 +15,28 @@ ActiveRecord::Schema.define(version: 2020_12_24_125212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "match_stats", force: :cascade do |t|
-    t.bigint "match_id", null: false
+  create_table "game_stats", force: :cascade do |t|
+    t.bigint "game_id", null: false
     t.bigint "player_id", null: false
     t.integer "shot_on_target"
     t.integer "shot_misses"
     t.integer "distance_covered"
     t.integer "passes"
-    t.integer "pass_acc"
+    t.integer "pass_completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["match_id"], name: "index_match_stats_on_match_id"
-    t.index ["player_id"], name: "index_match_stats_on_player_id"
+    t.index ["game_id"], name: "index_game_stats_on_game_id"
+    t.index ["player_id"], name: "index_game_stats_on_player_id"
   end
 
-  create_table "matches", force: :cascade do |t|
+  create_table "games", force: :cascade do |t|
     t.datetime "date"
     t.bigint "home_team_id"
     t.bigint "away_team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["away_team_id"], name: "index_matches_on_away_team_id"
-    t.index ["home_team_id"], name: "index_matches_on_home_team_id"
+    t.index ["away_team_id"], name: "index_games_on_away_team_id"
+    t.index ["home_team_id"], name: "index_games_on_home_team_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_12_24_125212) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "match_stats", "matches"
-  add_foreign_key "match_stats", "players"
+  add_foreign_key "game_stats", "games"
+  add_foreign_key "game_stats", "players"
   add_foreign_key "players", "teams"
 end

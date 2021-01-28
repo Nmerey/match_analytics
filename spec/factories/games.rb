@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :match do
+  factory :game do
     date { DateTime.now }
     home_team {}
     away_team {}
